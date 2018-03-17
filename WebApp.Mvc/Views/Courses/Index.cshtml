@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebApp.Mvc.Models.Course>
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+<h2>@Localizer["All courses"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Skills)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => course.Title)
+            </td>
+            <td>
+                @foreach (var skill in course.Skills)
+                {
+                    <p>@skill.Name</p>
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
